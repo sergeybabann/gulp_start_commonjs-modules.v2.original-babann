@@ -1,0 +1,31 @@
+{
+  "name": "gulp_start_commonjs-modules.original-babann",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/sergeybabann/gulp_start_commonjs-modules.original-babann#readme",
+  "bugs": {
+    "url": "https://github.com/sergeybabann/gulp_start_commonjs-modules.original-babann/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergeybabann/gulp_start_commonjs-modules.original-babann.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^6.0.0",
+    "gulp-uglify-es": "^3.0.0",
+    "sass": "^1.83.1",
+    "swiper": "^11.2.1"
+  }
+}

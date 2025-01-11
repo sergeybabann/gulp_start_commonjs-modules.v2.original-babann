@@ -1,0 +1,26 @@
+@use '../../node_modules/swiper/swiper-bundle';
+
+body {
+  padding: 100px;
+  background-color: orange;
+}
+
+.header {
+  background-color: #000;
+  color: #fff;
+  height: 300px;
+  padding: 20px;
+}
+
+.main {
+  padding: 100px;
+  background-color: gray;
+  height: 500px;
+}
+
+.footer {
+  background-color: #000;
+  color: red;
+  padding: 20px;
+  height: 300px;
+}

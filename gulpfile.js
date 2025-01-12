@@ -7,11 +7,43 @@ const browserSync = require('browser-sync').create()
 const autoprefixer = require('gulp-autoprefixer')
 const clean = require('gulp-clean')
 const newer = require('gulp-newer')
+// const fonter = require('gulp-fonter')
+// const ttf2woff2 = require('gulp-ttf2woff2')
 const svgSprite = require('gulp-svg-sprite')
 // const avif = require('gulp-avif')
 // const webp = require('gulp-webp')
 // const imagemin = require('gulp-imagemin')
 // const cached = require('gulp-cached')
+
+// function fonts() {
+//   return src('app/fonts/src')
+//     .pipe(
+//       fonter({
+//         formats: ['woff', 'ttf'],
+//       })
+//     )
+//     .pipe(src('app/fonts/*.ttf'))
+//     .pipe(ttf2woff2())
+//     .pipe(dest('app/fonts'))
+// }
+
+function fonts() {
+  return src('app/fonts/src/*.*').pipe(dest('app/fonts'))
+}
+
+// let ttf2woff2
+// async function fonts() {
+//   ttf2woff2 = ttf2woff2 || (await import('gulp-ttf2woff2')).default
+//   return src('app/fonts/src/*.*')
+//     .pipe(
+//       fonter({
+//         formats: ['woff', 'ttf'],
+//       })
+//     )
+//     .pipe(src('app/fonts/*.ttf'))
+//     .pipe(ttf2woff2())
+//     .pipe(dest('app/fonts'))
+// }
 
 function images() {
   // функция переносит все файлы изображений c указанными расширениями из папки src в папку dist
@@ -76,6 +108,9 @@ function building() {
     [
       'app/css/style.min.css',
       'app/images/dist/*.*',
+      '!app/images/dist/*.svg',
+      'app/images/dist/sprite.svg',
+      'app/fonts/*.*',
       'app/js/main.min.js',
       'app/**/*.html',
     ],
@@ -87,6 +122,8 @@ function building() {
 
 exports.styles = styles
 exports.images = images
+exports.fonts = fonts
+exports.building = building
 exports.sprite = sprite
 exports.scripts = scripts
 exports.watching = watching

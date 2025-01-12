@@ -6,26 +6,18 @@ const uglify = require('gulp-uglify-es').default
 const browserSync = require('browser-sync').create()
 const autoprefixer = require('gulp-autoprefixer')
 const clean = require('gulp-clean')
-const avif = require('gulp-avif')
-const webp = require('gulp-webp')
-const imagemin = require('gulp-imagemin')
-const cached = require('gulp-cached')
-
-// function images() {
-//   return src(['app/images/src/*.*', '!app/images/src/*.svg'])
-//     .pipe(avif({ quality: 50 }))
-//     .pipe(src('app/images/src/*.*'))
-//     .pipe(webp())
-//     .pipe(src('app/images/src/*.*'))
-//     .pipe(imagemin())
-//     .pipe(dest('app/images/dist'))
-// }
+const newer = require('gulp-newer')
+// const avif = require('gulp-avif')
+// const webp = require('gulp-webp')
+// const imagemin = require('gulp-imagemin')
+// const cached = require('gulp-cached')
 
 function images() {
   // функция переносит все файлы изображений c указанными расширениями из папки src в папку dist
   return src('app/images/src/**/*.{jpg,png,svg,gif,ico,webp,avif}', {
     encoding: false,
   })
+    .pipe(newer('app/images/dist'))
     .pipe(dest('app/images/dist'))
     .pipe(browserSync.stream())
 }

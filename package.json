@@ -21,6 +21,7 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-newer": "^1.4.0",
     "gulp-sass": "^6.0.0",
+    "gulp-svg-sprite": "^2.0.3",
     "gulp-uglify-es": "^3.0.0",
     "gulp-webp": "^4.0.1",
     "sass": "^1.83.1",

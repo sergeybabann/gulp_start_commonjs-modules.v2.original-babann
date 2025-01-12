@@ -7,6 +7,7 @@ const browserSync = require('browser-sync').create()
 const autoprefixer = require('gulp-autoprefixer')
 const clean = require('gulp-clean')
 const newer = require('gulp-newer')
+const svgSprite = require('gulp-svg-sprite')
 // const avif = require('gulp-avif')
 // const webp = require('gulp-webp')
 // const imagemin = require('gulp-imagemin')
@@ -31,6 +32,21 @@ function styles() {
     .pipe(browserSync.stream())
 }
 
+function sprite() {
+  return src('app/images/dist/*.svg')
+    .pipe(
+      svgSprite({
+        mode: {
+          stack: {
+            sprite: '../sprite.svg',
+            example: true,
+          },
+        },
+      })
+    )
+    .pipe(dest('app/images/dist'))
+}
+
 function scripts() {
   return src(['node_modules/swiper/swiper-bundle.js', 'app/js/main.js'])
     .pipe(concat('main.min.js'))
@@ -46,6 +62,7 @@ function watching() {
     },
   })
   watch(['app/scss/style.scss'], styles)
+  watch(['app/images/src'], images)
   watch(['app/js/main.js'], scripts)
   watch(['app/*.html']).on('change', browserSync.reload)
 }
@@ -55,13 +72,22 @@ function cleanDist() {
 }
 
 function building() {
-  return src(['app/css/style.min.css', 'app/js/main.min.js', 'app/**/*.html'], {
-    base: 'app',
-  }).pipe(dest('dist'))
+  return src(
+    [
+      'app/css/style.min.css',
+      'app/images/dist/*.*',
+      'app/js/main.min.js',
+      'app/**/*.html',
+    ],
+    {
+      base: 'app',
+    }
+  ).pipe(dest('dist'))
 }
 
 exports.styles = styles
 exports.images = images
+exports.sprite = sprite
 exports.scripts = scripts
 exports.watching = watching
 

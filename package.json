@@ -20,6 +20,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-fonter": "^0.3.0",
     "gulp-imagemin": "^7.1.0",
+    "gulp-include": "^2.4.1",
     "gulp-newer": "^1.4.0",
     "gulp-sass": "^6.0.0",
     "gulp-svg-sprite": "^2.0.3",
